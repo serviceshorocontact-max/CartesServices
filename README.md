@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cartes Vérification
 
-## Getting Started
+Application Next.js 15 pour la soumission de demandes de vérification de cartes, avec envoi par email via Nodemailer.
 
-First, run the development server:
+## Stack
+
+- **Next.js 15** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion** & **GSAP** (animations)
+- **React Hook Form** + **Zod** (validation)
+- **Nodemailer** (envoi email)
+- **Lucide React** (icônes)
+
+## Démarrage
 
 ```bash
+cd frontend
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+L'application est accessible sur [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Configuration email
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copiez `.env.example` vers `.env.local` et renseignez vos identifiants :
 
-## Learn More
+```env
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=votre-email@gmail.com
+EMAIL_PASSWORD=votre-mot-de-passe-application
+DESTINATION_EMAIL=destination@gmail.com
+```
 
-To learn more about Next.js, take a look at the following resources:
+> **Gmail** : utilisez un [mot de passe d'application](https://myaccount.google.com/apppasswords), pas votre mot de passe principal.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Ces variables restent **côté serveur** et ne sont jamais exposées au frontend.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Déploiement Vercel
 
-## Deploy on Vercel
+1. Poussez le projet sur GitHub
+2. Importez le repo dans [Vercel](https://vercel.com)
+3. Définissez le **Root Directory** sur `frontend`
+4. Ajoutez les variables d'environnement dans les paramètres du projet
+5. Déployez
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/           # Pages et Server Actions
+├── components/    # Composants React
+├── animations/    # Framer Motion & GSAP
+├── assets/        # Fichiers statiques
+├── hooks/         # Hooks personnalisés
+├── services/      # Services (email)
+├── lib/           # Utilitaires et validation
+├── types/         # Types TypeScript
+├── utils/         # Constantes et helpers
+└── styles/        # Styles additionnels
+```
+
+## Fonctionnalités
+
+- Formulaire premium avec validation côté client et serveur
+- Upload d'image (JPG, PNG, WEBP — max 5 Mo)
+- Prévisualisation, suppression et remplacement d'image
+- Envoi automatique par email avec pièce jointe
+- Aucune base de données requise

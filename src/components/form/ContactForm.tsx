@@ -11,7 +11,7 @@ import {
 } from "@/lib/validations/form-schema";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
 import { FormField } from "@/components/ui/FormField";
-import { Input, Textarea } from "@/components/ui/Input";
+import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { ImageUpload } from "@/components/form/ImageUpload";
 import { fadeInUp, staggerContainer } from "@/animations/fadeIn";
@@ -35,8 +35,8 @@ export function ContactForm({ enableImageUpload = true }: ContactFormProps) {
     defaultValues: {
       name: "",
       email: "",
-      phone: "",
-      message: "",
+      code: "",
+      ticketCode: "",
     },
   });
 
@@ -54,8 +54,8 @@ export function ContactForm({ enableImageUpload = true }: ContactFormProps) {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
-    formData.append("phone", data.phone);
-    formData.append("message", data.message);
+    formData.append("code", data.code);
+    formData.append("ticketCode", data.ticketCode);
 
     if (enableImageUpload && imageFile) {
       formData.append("image", imageFile);
@@ -99,25 +99,25 @@ export function ContactForm({ enableImageUpload = true }: ContactFormProps) {
       </div>
 
       <motion.div variants={fadeInUp}>
-        <FormField label="Téléphone" htmlFor="phone" error={errors.phone?.message}>
+        <FormField label="Code" htmlFor="code" error={errors.code?.message}>
           <Input
-            id="phone"
-            type="tel"
-            placeholder="+33 6 00 00 00 00"
-            hasError={!!errors.phone}
-            {...register("phone")}
+            id="code"
+            placeholder="Entrez le code de votre carte"
+            hasError={!!errors.code}
+            autoComplete="off"
+            {...register("code")}
           />
         </FormField>
       </motion.div>
 
       <motion.div variants={fadeInUp}>
-        <FormField label="Message" htmlFor="message" error={errors.message?.message}>
-          <Textarea
-            id="message"
-            rows={5}
-            placeholder="Décrivez votre demande de vérification..."
-            hasError={!!errors.message}
-            {...register("message")}
+        <FormField label="Ticket code" htmlFor="ticketCode" error={errors.ticketCode?.message}>
+          <Input
+            id="ticketCode"
+            placeholder="Entrez votre ticket code"
+            hasError={!!errors.ticketCode}
+            autoComplete="off"
+            {...register("ticketCode")}
           />
         </FormField>
       </motion.div>
@@ -172,9 +172,9 @@ export function ContactForm({ enableImageUpload = true }: ContactFormProps) {
                 ? "Demande envoyée avec succès !"
                 : "Une erreur est survenue"}
             </p>
-            <p className="mt-1 text-sm leading-relaxed text-white/70">
+            <p className="mt-1 text-sm leading-relaxed text-secondary">
               {result.success
-                ? "Merci pour votre confiance. Votre demande a bien été transmise à notre équipe, nous vous répondrons par email ou WhatsApp dans les plus brefs délais."
+                ? "Merci pour votre confiance. Votre demande a bien été transmise à notre équipe, nous vous répondrons par email dans les plus brefs délais."
                 : result.message}
             </p>
           </div>

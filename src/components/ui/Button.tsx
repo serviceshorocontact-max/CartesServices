@@ -21,7 +21,7 @@ export function Button({
         variant === "primary" &&
           "bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-lg shadow-violet-500/25 hover:-translate-y-0.5 hover:from-violet-400 hover:to-purple-500 hover:shadow-violet-500/35 active:scale-[0.98]",
         variant === "ghost" &&
-          "border border-white/15 bg-white/5 text-white/80 hover:border-white/25 hover:bg-white/10",
+          "border border-theme bg-white/5 text-secondary hover:border-violet-500/40 hover:bg-white/10 hover:text-primary",
         className
       )}
       disabled={disabled || isLoading}

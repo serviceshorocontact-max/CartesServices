@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cartes Vérification – Gestion et revente de cartes cadeaux",
+  title: "Cartes Vérification – Authentification et revente de cartes cadeaux",
   description:
-    "Vérifiez la validité de vos cartes, activez-les en quelques clics ou revendez-les en toute sécurité.",
+    "Authentifiez vos cartes, vérifiez leur validité ou revendez-les en toute sécurité.",
 };
 
 export default function RootLayout({
@@ -24,7 +24,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (theme === 'light') {
+                    document.documentElement.classList.add('light');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

@@ -2,6 +2,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/layout/HeroSection";
 import { FeaturesSection } from "@/components/sections/FeaturesSection";
+import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
+import { FeaturedCardsCarousel } from "@/components/sections/FeaturedCardsCarousel";
 import { AcceptedCardsSection } from "@/components/sections/AcceptedCardsSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -14,6 +16,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <HeroSection />
           <FeaturesSection />
+          <HowItWorksSection />
+        </div>
+        <FeaturedCardsCarousel />
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <AcceptedCardsSection />
           <TestimonialsSection />
           <ContactSection />

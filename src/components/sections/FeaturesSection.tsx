@@ -34,8 +34,8 @@ export function FeaturesSection() {
               >
                 <Icon className="h-7 w-7 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-white">{feature.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/60">
+              <h3 className="text-lg font-semibold text-primary">{feature.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-tertiary">
                 {feature.description}
               </p>
             </motion.div>

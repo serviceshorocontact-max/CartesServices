@@ -8,11 +8,11 @@ export function Input({ className, hasError, ...props }: InputProps) {
   return (
     <input
       className={cn(
-        "w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 backdrop-blur-sm transition-all duration-200",
+        "w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-primary placeholder:text-tertiary backdrop-blur-sm transition-all duration-200",
         "focus:border-violet-500/50 focus:outline-none focus:ring-2 focus:ring-violet-500/20",
         hasError
           ? "border-red-500/50 focus:border-red-500/50 focus:ring-red-500/20"
-          : "border-white/15 hover:border-white/25",
+          : "border-theme hover:border-violet-500/40",
         className
       )}
       {...props}
@@ -28,11 +28,11 @@ export function Textarea({ className, hasError, ...props }: TextareaProps) {
   return (
     <textarea
       className={cn(
-        "w-full resize-none rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 backdrop-blur-sm transition-all duration-200",
+        "w-full resize-none rounded-xl border bg-white/5 px-4 py-3 text-sm text-primary placeholder:text-tertiary backdrop-blur-sm transition-all duration-200",
         "focus:border-violet-500/50 focus:outline-none focus:ring-2 focus:ring-violet-500/20",
         hasError
           ? "border-red-500/50 focus:border-red-500/50 focus:ring-red-500/20"
-          : "border-white/15 hover:border-white/25",
+          : "border-theme hover:border-violet-500/40",
         className
       )}
       {...props}

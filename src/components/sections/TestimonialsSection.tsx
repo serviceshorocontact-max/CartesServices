@@ -17,7 +17,7 @@ export function TestimonialsSection() {
       >
         <motion.h2
           variants={fadeInUp}
-          className="mb-10 text-center text-2xl font-bold text-white sm:text-3xl"
+          className="mb-10 text-center text-2xl font-bold text-primary sm:text-3xl"
         >
           Ce que nos clients disent
         </motion.h2>
@@ -27,7 +27,7 @@ export function TestimonialsSection() {
             <motion.div
               key={item.author}
               variants={fadeInUp}
-              className="hover-lift rounded-2xl border border-white/10 bg-white/5 p-6"
+              className="hover-lift rounded-2xl border border-theme bg-white/5 p-6"
             >
               <div className="mb-4 flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -37,14 +37,14 @@ export function TestimonialsSection() {
                   />
                 ))}
               </div>
-              <p className="text-sm leading-relaxed text-white/70">
+              <p className="text-sm leading-relaxed text-secondary">
                 &ldquo;{item.quote}&rdquo;
               </p>
               <div className="mt-5 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-purple-600 text-sm font-bold text-white">
                   {item.initial}
                 </div>
-                <span className="text-sm font-medium text-white/80">
+                <span className="text-sm font-medium text-primary">
                   {item.author}
                 </span>
               </div>

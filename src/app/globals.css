@@ -1,12 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #1e1b4b;
+  --background: #000000;
   --foreground: #fafafa;
   --accent: #8b5cf6;
   --accent-light: #a78bfa;
-  --surface: #312e81;
-  --surface-border: #4338ca;
+  --surface: #0a0a0a;
+  --surface-border: #27272a;
+}
+
+html.light {
+  --background: #000000;
+  --foreground: #fafafa;
+  --accent: #a78bfa;
+  --accent-light: #c4b5fd;
+  --surface: #0a0a0a;
+  --surface-border: #27272a;
 }
 
 @theme inline {
@@ -24,6 +33,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
 }
 
 ::selection {
@@ -31,12 +43,27 @@ body {
   color: #fff;
 }
 
-.page-gradient {
-  background:
-    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(139, 92, 246, 0.35), transparent),
-    radial-gradient(ellipse 50% 40% at 90% 50%, rgba(99, 102, 241, 0.2), transparent),
-    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(168, 85, 247, 0.15), transparent),
-    linear-gradient(180deg, #312e81 0%, #1e1b4b 40%, #0f0a2e 100%);
+/* ===== Classes utilitaires adaptatives ===== */
+.text-primary {
+  color: var(--foreground);
+}
+
+.text-secondary {
+  color: var(--foreground);
+  opacity: 0.75;
+}
+
+.text-tertiary {
+  color: var(--foreground);
+  opacity: 0.55;
+}
+
+.text-inverse {
+  color: var(--foreground);
+}
+
+html.light .text-inverse {
+  color: #fafafa;
 }
 
 .glass-card {
@@ -48,7 +75,77 @@ body {
     0 20px 50px -12px rgba(0, 0, 0, 0.4);
 }
 
-/* ==== Animations légères ==== */
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 20px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Fonds d'image ===== */
+.page-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(139, 92, 246, 0.35), transparent),
+    radial-gradient(ellipse 50% 40% at 90% 50%, rgba(99, 102, 241, 0.2), transparent),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(168, 85, 247, 0.15), transparent),
+    linear-gradient(180deg, #0a0a0a 0%, #000000 40%, #000000 100%);
+}
+
+html.light .page-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(139, 92, 246, 0.35), transparent),
+    radial-gradient(ellipse 50% 40% at 90% 50%, rgba(99, 102, 241, 0.2), transparent),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(168, 85, 247, 0.15), transparent),
+    linear-gradient(180deg, #0a0a0a 0%, #000000 40%, #000000 100%);
+}
+
+.hero-bg {
+  background-image: url("/fond.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.contact-bg {
+  background-image: url("/fond2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+html.light .hero-bg,
+html.light .contact-bg {
+  background-image: inherit;
+}
+
+/* ===== Bordure adaptative ===== */
+.border-theme {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+html.light .border-theme {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.bg-surface {
+  background: var(--surface);
+}
+
+/* ===== Boutons et badges adaptatifs ===== */
+.chip {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--foreground);
+  opacity: 0.85;
+}
+
+html.light .chip {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ===== Animations ===== */
 @keyframes float {
   0%,
   100% {
@@ -56,6 +153,16 @@ body {
   }
   50% {
     transform: translateY(-12px);
+  }
+}
+
+@keyframes floatX {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
   }
 }
 
@@ -69,6 +176,38 @@ body {
   }
 }
 
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .animate-float {
   animation: float 7s ease-in-out infinite;
 }
@@ -77,8 +216,20 @@ body {
   animation: float 8s ease-in-out 1.5s infinite;
 }
 
+.animate-float-x {
+  animation: floatX 7s ease-in-out infinite;
+}
+
 .animate-glow {
   animation: glow 4s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.5s ease-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
 }
 
 .hover-lift {
@@ -92,10 +243,33 @@ body {
   box-shadow: 0 24px 48px -16px rgba(139, 92, 246, 0.3);
 }
 
+html.light .hover-lift:hover {
+  box-shadow: 0 24px 48px -16px rgba(139, 92, 246, 0.3);
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    110deg,
+    var(--foreground) 35%,
+    var(--accent-light) 50%,
+    var(--foreground) 65%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-float-delayed,
-  .animate-glow {
+  .animate-float-x,
+  .animate-glow,
+  .animate-pulse-ring,
+  .animate-spin-slow,
+  .shimmer-text {
     animation: none;
   }
 }
+

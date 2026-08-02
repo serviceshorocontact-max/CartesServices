@@ -93,7 +93,7 @@ export function ImageUpload({ onChange, error, disabled }: ImageUploadProps) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="relative overflow-hidden rounded-xl border border-zinc-700/80 bg-zinc-900/40"
+            className="relative overflow-hidden rounded-xl border border-theme bg-white/5"
           >
             <div className="relative aspect-video w-full">
               <Image
@@ -105,8 +105,8 @@ export function ImageUpload({ onChange, error, disabled }: ImageUploadProps) {
               />
             </div>
 
-            <div className="flex items-center justify-between border-t border-zinc-700/50 bg-zinc-900/60 px-4 py-3">
-              <span className="truncate text-sm text-zinc-400">{fileName}</span>
+            <div className="flex items-center justify-between border-t border-theme bg-white/5 px-4 py-3">
+              <span className="truncate text-sm text-tertiary">{fileName}</span>
               <div className="flex gap-2">
                 <button
                   type="button"
@@ -145,24 +145,24 @@ export function ImageUpload({ onChange, error, disabled }: ImageUploadProps) {
             className={cn(
               "flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed px-6 py-10 transition-all duration-200",
               isDragging
-                ? "border-amber-500/60 bg-amber-500/5"
-                : "border-zinc-700/60 bg-zinc-900/30 hover:border-zinc-600 hover:bg-zinc-900/50",
+                ? "border-violet-500/60 bg-violet-500/5"
+                : "border-theme bg-white/5 hover:border-violet-500/40 hover:bg-white/10",
               disabled && "cursor-not-allowed opacity-50",
               displayError && "border-red-500/40"
             )}
           >
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-zinc-800/80">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10">
               {isDragging ? (
-                <Upload className="h-6 w-6 text-amber-400" />
+                <Upload className="h-6 w-6 text-violet-400" />
               ) : (
-                <ImageIcon className="h-6 w-6 text-zinc-500" />
+                <ImageIcon className="h-6 w-6 text-tertiary" />
               )}
             </div>
             <div className="text-center">
-              <p className="text-sm font-medium text-zinc-300">
+              <p className="text-sm font-medium text-secondary">
                 Glissez une image ou cliquez pour parcourir
               </p>
-              <p className="mt-1 text-xs text-zinc-500">
+              <p className="mt-1 text-xs text-tertiary">
                 JPG, PNG, WEBP — max {MAX_FILE_SIZE / (1024 * 1024)} Mo
               </p>
             </div>

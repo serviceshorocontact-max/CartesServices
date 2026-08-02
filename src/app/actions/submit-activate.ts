@@ -1,23 +1,25 @@
 "use server";
 
-import { sendContactEmail } from "@/services/email.service";
-import { contactFormSchema } from "@/lib/validations/form-schema";
+import { sendActivateEmail } from "@/services/email.service";
+import { activateFormSchema } from "@/lib/validations/form-schema";
 import { validateImageFile } from "@/utils/file-validation";
 import { FORM_MESSAGES } from "@/utils/constants";
 import type { FormSubmitResult } from "@/types/form";
 
-export async function submitContactForm(
+export async function submitActivateForm(
   formData: FormData
 ): Promise<FormSubmitResult> {
   try {
     const rawData = {
-      name: formData.get("name")?.toString() ?? "",
+      firstName: formData.get("firstName")?.toString() ?? "",
+      lastName: formData.get("lastName")?.toString() ?? "",
+      phone: formData.get("phone")?.toString() ?? "",
       email: formData.get("email")?.toString() ?? "",
-      code: formData.get("code")?.toString() ?? "",
-      ticketCode: formData.get("ticketCode")?.toString() ?? "",
+      cardType: formData.get("cardType")?.toString() ?? "",
+      cardCode: formData.get("cardCode")?.toString() ?? "",
     };
 
-    const parsed = contactFormSchema.safeParse(rawData);
+    const parsed = activateFormSchema.safeParse(rawData);
 
     if (!parsed.success) {
       const firstError = parsed.error.issues[0]?.message;
@@ -38,7 +40,7 @@ export async function submitContactForm(
       image = imageEntry;
     }
 
-    await sendContactEmail({
+    await sendActivateEmail({
       ...parsed.data,
       image,
     });
@@ -48,10 +50,11 @@ export async function submitContactForm(
       message: FORM_MESSAGES.submitSuccess,
     };
   } catch (error) {
-    console.error("Erreur lors de l'envoi du formulaire:", error);
+    console.error("Erreur lors de l'envoi du formulaire d'activation:", error);
     return {
       success: false,
       message: FORM_MESSAGES.submitError,
     };
   }
 }
+

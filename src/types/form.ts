@@ -1,8 +1,30 @@
 export interface ContactFormData {
   name: string;
   email: string;
+  code: string;
+  ticketCode: string;
+  image?: File | null;
+}
+
+export interface ActivateFormData {
+  firstName: string;
+  lastName: string;
   phone: string;
-  message: string;
+  email: string;
+  cardType: string;
+  cardCode: string;
+  image?: File | null;
+}
+
+export interface SellFormData {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  cardType: string;
+  cardCode: string;
+  amount: string;
+  currency: string;
   image?: File | null;
 }
 

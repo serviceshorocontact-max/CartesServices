@@ -1,19 +1,43 @@
 export const siteConfig = {
   name: "Cartes Vérification",
-  tagline: "Votre plateforme de gestion de cartes cadeaux",
+  tagline: "Votre plateforme d'authentification de cartes",
   description:
-    "Vérifiez la validité de vos cartes, activez-les en quelques clics ou revendez-les en toute sécurité.",
+    "Authentifiez vos cartes en quelques clics, vérifiez leur validité ou revendez-les en toute sécurité.",
   email: "serviceshorocontact@gmail.com",
-  whatsapp: "+33600000000",
-  whatsappMessage:
-    "Bonjour, je souhaite des informations sur la vérification de mes cartes cadeaux.",
+  activateUrl: "/activate",
+  sellUrl: "/sell",
 };
 
 export const navLinks = [
-  { label: "Accueil", href: "#accueil", icon: "home" as const },
-  { label: "Activer une carte", href: "#contact", icon: "activate" as const },
-  { label: "Revendre une carte", href: "#contact", icon: "sell" as const },
+  { label: "Accueil", href: "/", icon: "home" as const },
+  {
+    label: "Authentifier une carte",
+    href: "/activate",
+    icon: "activate" as const,
+  },
+  {
+    label: "Revendre une carte",
+    href: "/sell",
+    icon: "sell" as const,
+  },
 ];
+
+export const cardTypes = [
+  "Transcash",
+  "PCS",
+  "Neosurf",
+  "Apple",
+  "Google Play",
+  "Steam",
+  "Paysafecard",
+  "Amazon",
+  "PlayStation",
+  "Xbox",
+  "Netflix",
+  "Spotify",
+];
+
+export const currencies = ["EUR", "USD", "GBP", "CHF", "CAD"];
 
 export const features = [
   {
@@ -33,44 +57,66 @@ export const features = [
   {
     title: "Processus Simplifié",
     description:
-      "Activez ou revendez vos cartes en quelques étapes, sans complications.",
+      "Authentifiez ou revendez vos cartes en quelques étapes, sans complications.",
     icon: "check" as const,
     color: "from-pink-400 to-rose-500",
   },
 ];
 
+export const howItWorks = [
+  {
+    step: "01",
+    title: "Choisissez votre carte",
+    description:
+      "Sélectionnez la marque de votre carte (Transcash, PCS, Steam, Paysafecard...) parmi notre liste.",
+    image: "/fi1.jpg",
+    icon: "search" as const,
+  },
+  {
+    step: "02",
+    title: "Entrez votre code",
+    description:
+      "Saisissez le code de votre carte pour lancer le processus d'authentification en toute sécurité.",
+    image: "/fi2.jpg",
+    icon: "key" as const,
+  },
+  {
+    step: "03",
+    title: "Authentifiez et recevez",
+    description:
+      "Validez l'authentification de votre carte et recevez votre confirmation instantanément.",
+    image: "/fi3.jpg",
+    icon: "check" as const,
+  },
+];
+
 export const acceptedCards = [
   {
-    name: "Cartes bancaires",
+    name: "Transcash",
     image: "/cards/carte0.jpg",
-    description: "Visa, Mastercard et cartes prépayées",
+    description: "Cartes Transcash et rechargeables",
   },
   {
-    name: "Cartes internationales",
+    name: "PCS",
     image: "/cards/carte1.jpg",
-    description: "Mastercard et Visa internationales",
+    description: "PCS, cartes prépayées et rechargeables",
   },
   {
-    name: "Cartes prépayées",
+    name: "Steam",
     image: "/cards/carte2.jpg",
-    description: "PCS, Transcash et cartes rechargeables",
+    description: "Cartes cadeaux Steam et jeux",
   },
   {
-    name: "Cartes cadeaux",
+    name: "Paysafecard",
     image: "/cards/carte3.jpg",
-    description: "Google Play, Steam, Neosurf et plus",
-  },
-  {
-    name: "Cartes premium",
-    image: "/cards/crte4.jpg",
-    description: "Cartes Visa et Mastercard premium",
+    description: "Cartes Paysafecard et e-vouchers",
   },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Service ultra-rapide et fiable. J'ai pu activer ma carte Steam en moins de 5 minutes. Je recommande vivement !",
+      "Service ultra-rapide et fiable. J'ai pu authentifier ma carte Steam en moins de 5 minutes. Je recommande vivement !",
     author: "Julien R.",
     initial: "J",
   },
@@ -88,4 +134,12 @@ export const testimonials = [
   },
 ];
 
-export const cardBrands = ["PCS", "Transcash", "Google Play", "Steam", "Neosurf", "Apple"];
+export const cardBrands = [
+  "Transcash",
+  "PCS",
+  "Steam",
+  "Paysafecard",
+  "Neosurf",
+  "Apple",
+];
+

@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cartes Vérification",
-  description: "Soumettez votre demande de vérification de cartes en toute sécurité.",
+  title: "Cartes Vérification – Gestion et revente de cartes cadeaux",
+  description:
+    "Vérifiez la validité de vos cartes, activez-les en quelques clics ou revendez-les en toute sécurité.",
 };
 
 export default function RootLayout({

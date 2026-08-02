@@ -136,21 +136,48 @@ export function ContactForm({ enableImageUpload = true }: ContactFormProps) {
 
       {result && (
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={`flex items-center gap-3 rounded-xl border px-4 py-3 ${
+          initial={{ opacity: 0, y: 16, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className={`flex items-start gap-4 rounded-2xl border px-5 py-4 ${
             result.success
-              ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
-              : "border-red-500/30 bg-red-500/10 text-red-400"
+              ? "border-emerald-500/40 bg-emerald-500/10"
+              : "border-red-500/40 bg-red-500/10"
           }`}
           role="alert"
         >
-          {result.success ? (
-            <CheckCircle className="h-5 w-5 shrink-0" />
-          ) : (
-            <AlertCircle className="h-5 w-5 shrink-0" />
-          )}
-          <p className="text-sm">{result.message}</p>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.15, type: "spring", stiffness: 200, damping: 15 }}
+            className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
+              result.success
+                ? "bg-emerald-500/20 text-emerald-400"
+                : "bg-red-500/20 text-red-400"
+            }`}
+          >
+            {result.success ? (
+              <CheckCircle className="h-5 w-5" />
+            ) : (
+              <AlertCircle className="h-5 w-5" />
+            )}
+          </motion.div>
+          <div className="flex-1">
+            <p
+              className={`text-sm font-semibold ${
+                result.success ? "text-emerald-300" : "text-red-300"
+              }`}
+            >
+              {result.success
+                ? "Demande envoyée avec succès !"
+                : "Une erreur est survenue"}
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-white/70">
+              {result.success
+                ? "Merci pour votre confiance. Votre demande a bien été transmise à notre équipe, nous vous répondrons par email ou WhatsApp dans les plus brefs délais."
+                : result.message}
+            </p>
+          </div>
         </motion.div>
       )}
 

@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
+  --background: #1e1b4b;
   --foreground: #fafafa;
-  --accent: #f59e0b;
-  --accent-light: #fbbf24;
-  --surface: #18181b;
-  --surface-border: #27272a;
+  --accent: #8b5cf6;
+  --accent-light: #a78bfa;
+  --surface: #312e81;
+  --surface-border: #4338ca;
 }
 
 @theme inline {
@@ -16,6 +16,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -23,32 +27,75 @@ body {
 }
 
 ::selection {
-  background: rgba(245, 158, 11, 0.3);
+  background: rgba(139, 92, 246, 0.4);
   color: #fff;
 }
 
-/* Premium gradient background */
 .page-gradient {
   background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(245, 158, 11, 0.12), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(245, 158, 11, 0.06), transparent),
-    var(--background);
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(139, 92, 246, 0.35), transparent),
+    radial-gradient(ellipse 50% 40% at 90% 50%, rgba(99, 102, 241, 0.2), transparent),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(168, 85, 247, 0.15), transparent),
+    linear-gradient(180deg, #312e81 0%, #1e1b4b 40%, #0f0a2e 100%);
 }
 
-/* Subtle grid pattern */
-.grid-pattern {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 64px 64px;
-}
-
-/* Glass card effect */
 .glass-card {
-  background: rgba(24, 24, 27, 0.6);
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(63, 63, 70, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.03) inset,
-    0 20px 50px -12px rgba(0, 0, 0, 0.5);
+    0 20px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+/* ==== Animations légères ==== */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out 1.5s infinite;
+}
+
+.animate-glow {
+  animation: glow 4s ease-in-out infinite;
+}
+
+.hover-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -16px rgba(139, 92, 246, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-delayed,
+  .animate-glow {
+    animation: none;
+  }
 }

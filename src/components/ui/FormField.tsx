@@ -19,7 +19,7 @@ export function FormField({
     <div className={cn("space-y-2", className)}>
       <label
         htmlFor={htmlFor}
-        className="block text-sm font-medium tracking-wide text-zinc-300"
+        className="block text-sm font-medium tracking-wide text-white/80"
       >
         {label}
       </label>

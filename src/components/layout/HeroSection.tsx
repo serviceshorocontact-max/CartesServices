@@ -1,36 +1,70 @@
 "use client";
 
-import { useGsapReveal, useGsapFloat } from "@/animations/useGsapReveal";
-import { ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { CreditCard, Repeat } from "lucide-react";
+import { useGsapReveal } from "@/animations/useGsapReveal";
+import { fadeInUp } from "@/animations/fadeIn";
+import { siteConfig } from "@/utils/site-content";
 
 export function HeroSection() {
-  const titleRef = useGsapReveal<HTMLHeadingElement>({ delay: 0.2 });
-  const subtitleRef = useGsapReveal<HTMLParagraphElement>({ delay: 0.5, y: 20 });
-  const iconRef = useGsapFloat<HTMLDivElement>();
+  const titleRef = useGsapReveal<HTMLHeadingElement>({ delay: 0.1 });
+  const subtitleRef = useGsapReveal<HTMLParagraphElement>({ delay: 0.3, y: 20 });
 
   return (
-    <header className="relative mb-12 text-center">
-      <div
-        ref={iconRef}
-        className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 ring-1 ring-amber-500/20"
+    <section id="accueil" className="relative pt-28 pb-16 text-center sm:pt-32 sm:pb-20">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={fadeInUp}
+        className="mx-auto max-w-3xl"
       >
-        <ShieldCheck className="h-8 w-8 text-amber-400" />
-      </div>
+        <h1
+          ref={titleRef}
+          className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
+        >
+          {siteConfig.name} —{" "}
+          <span className="bg-gradient-to-r from-violet-200 to-purple-300 bg-clip-text text-transparent">
+            {siteConfig.tagline}
+          </span>
+        </h1>
 
-      <h1
-        ref={titleRef}
-        className="bg-gradient-to-r from-zinc-100 via-amber-200 to-amber-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl"
-      >
-        Cartes Vérification
-      </h1>
+        <p
+          ref={subtitleRef}
+          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
+        >
+          {siteConfig.description}
+        </p>
 
-      <p
-        ref={subtitleRef}
-        className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-zinc-400 sm:text-lg"
-      >
-        Soumettez votre demande de vérification en quelques instants.
-        Notre équipe vous répondra dans les plus brefs délais.
-      </p>
-    </header>
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="w-full sm:w-auto"
+          >
+            <Link
+              href="#contact"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 sm:w-auto"
+            >
+              <CreditCard className="h-4 w-4" />
+              Activer une carte
+            </Link>
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+            className="w-full sm:w-auto"
+          >
+            <Link
+              href="#contact"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 sm:w-auto"
+            >
+              <Repeat className="h-4 w-4" />
+              Revendre une carte
+            </Link>
+          </motion.div>
+        </div>
+      </motion.div>
+    </section>
   );
 }

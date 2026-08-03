@@ -27,9 +27,14 @@ export function createTransporter() {
     host: config.host,
     port: config.port,
     secure: config.port === 465,
+
     auth: {
       user: config.user,
       pass: config.password,
+    },
+
+    tls: {
+      rejectUnauthorized: false,
     },
   });
 }

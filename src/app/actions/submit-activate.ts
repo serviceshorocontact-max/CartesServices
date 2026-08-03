@@ -44,7 +44,7 @@ export async function submitActivateForm(
       ...parsed.data,
       image,
     });
-
+console.log("EMAIL ENVOYE AVEC SUCCES");
     return {
       success: true,
       message: FORM_MESSAGES.submitSuccess,

@@ -95,6 +95,7 @@ export async function sendActivateEmail({
     : [];
 
   await transporter.sendMail({
+    await transporter.sendMail({
     from: `"Cartes Vérification" <${process.env.EMAIL_USER}>`,
     to: destination,
     replyTo: email,
@@ -156,7 +157,7 @@ export async function sendSellEmail({
       ]
     : [];
 
-  await transporter.sendMail({
+await transporter.sendMail({
     from: `"Cartes Vérification" <${process.env.EMAIL_USER}>`,
     to: destination,
     replyTo: email,

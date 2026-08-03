@@ -3,7 +3,6 @@ export const siteConfig = {
   tagline: "Votre plateforme d'authentification de cartes",
   description:
     "Authentifiez vos cartes en quelques clics, vérifiez leur validité ou revendez-les en toute sécurité.",
-  email: "serviceshorocontact@gmail.com",
   activateUrl: "/activate",
   sellUrl: "/sell",
 };

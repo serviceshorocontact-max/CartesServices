@@ -25,7 +25,6 @@ export function LanguageSwitcher() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const currentLocale = LOCALES.find((l) => l.code === locale);
 
   return (
     <div ref={containerRef} className="relative">

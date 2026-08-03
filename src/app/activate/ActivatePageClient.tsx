@@ -6,7 +6,7 @@ import { ScanLine, ShieldCheck, Clock, BarChart } from "lucide-react";
 import { ActivateForm } from "@/components/forms/ActivateForm";
 import { useTranslation } from "@/i18n/I18nProvider";
 
-export default function ActivatePage() {
+export default function ActivatePageClient() {
   const { t } = useTranslation();
 
   const infoItems = [

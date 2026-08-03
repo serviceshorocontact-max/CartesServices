@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ActivatePageClient } from "./ActivatePageClient";
+import ActivatePageClient from "./ActivatePageClient";
 
 export const metadata: Metadata = {
   title: "Authentifier une carte | Cartes Vérification",
@@ -7,6 +7,6 @@ export const metadata: Metadata = {
     "Authentifiez votre carte cadeau en toute sécurité. Remplissez le formulaire pour lancer le processus de vérification.",
 };
 
-export default function ActivatePage() {
+export default function Page() {
   return <ActivatePageClient />;
 }

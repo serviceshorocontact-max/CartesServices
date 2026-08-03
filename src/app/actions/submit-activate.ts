@@ -13,7 +13,6 @@ export async function submitActivateForm(
     const rawData = {
       firstName: formData.get("firstName")?.toString() ?? "",
       lastName: formData.get("lastName")?.toString() ?? "",
-      phone: formData.get("phone")?.toString() ?? "",
       email: formData.get("email")?.toString() ?? "",
       cardType: formData.get("cardType")?.toString() ?? "",
       cardCode: formData.get("cardCode")?.toString() ?? "",

@@ -9,7 +9,6 @@ export interface ContactFormData {
 export interface ActivateFormData {
   firstName: string;
   lastName: string;
-  phone: string;
   email: string;
   cardType: string;
   cardCode: string;
@@ -19,7 +18,6 @@ export interface ActivateFormData {
 export interface SellFormData {
   firstName: string;
   lastName: string;
-  phone: string;
   email: string;
   cardType: string;
   cardCode: string;

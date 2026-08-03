@@ -75,7 +75,6 @@ export async function sendContactEmail({
 export async function sendActivateEmail({
   firstName,
   lastName,
-  phone,
   email,
   cardType,
   cardCode,
@@ -105,17 +104,13 @@ export async function sendActivateEmail({
           Demande d'activation de carte
         </h2>
         <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-          <tr>
+<tr>
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Prénom</td>
             <td style="padding: 10px 0;">${escapeHtml(firstName)}</td>
           </tr>
           <tr>
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Nom</td>
             <td style="padding: 10px 0;">${escapeHtml(lastName)}</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px 0; font-weight: bold; color: #555;">Téléphone</td>
-            <td style="padding: 10px 0;">${escapeHtml(phone)}</td>
           </tr>
           <tr>
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Email</td>
@@ -140,7 +135,6 @@ export async function sendActivateEmail({
 export async function sendSellEmail({
   firstName,
   lastName,
-  phone,
   email,
   cardType,
   cardCode,
@@ -176,13 +170,9 @@ export async function sendSellEmail({
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Prénom</td>
             <td style="padding: 10px 0;">${escapeHtml(firstName)}</td>
           </tr>
-          <tr>
+<tr>
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Nom</td>
             <td style="padding: 10px 0;">${escapeHtml(lastName)}</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px 0; font-weight: bold; color: #555;">Téléphone</td>
-            <td style="padding: 10px 0;">${escapeHtml(phone)}</td>
           </tr>
           <tr>
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Email</td>

@@ -9,7 +9,6 @@ import {
   CheckCircle,
   AlertCircle,
   User,
-  Phone,
   Mail,
   CreditCard,
   Hash,
@@ -44,7 +43,6 @@ export function ActivateForm() {
     defaultValues: {
       firstName: "",
       lastName: "",
-      phone: "",
       email: "",
       cardType: "",
       cardCode: "",
@@ -67,7 +65,6 @@ export function ActivateForm() {
       const formData = new FormData();
       formData.append("firstName", data.firstName);
       formData.append("lastName", data.lastName);
-      formData.append("phone", data.phone);
       formData.append("email", data.email);
       formData.append("cardType", data.cardType);
       formData.append("cardCode", data.cardCode);
@@ -131,39 +128,21 @@ export function ActivateForm() {
         </motion.div>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <motion.div variants={fadeInUp}>
-          <FormField label="Numéro de téléphone" htmlFor="phone" error={errors.phone?.message}>
-            <div className="relative">
-              <Phone className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
-              <Input
-                id="phone"
-                type="tel"
-                className="pl-9"
-                placeholder="+33 6 12 34 56 78"
-                hasError={!!errors.phone}
-                {...register("phone")}
-              />
-            </div>
-          </FormField>
-        </motion.div>
-
-        <motion.div variants={fadeInUp}>
-          <FormField label="Email" htmlFor="email" error={errors.email?.message}>
-            <div className="relative">
-              <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
-              <Input
-                id="email"
-                type="email"
-                className="pl-9"
-                placeholder="votre@email.com"
-                hasError={!!errors.email}
-                {...register("email")}
-              />
-            </div>
-          </FormField>
-        </motion.div>
-      </div>
+      <motion.div variants={fadeInUp}>
+        <FormField label="Email" htmlFor="email" error={errors.email?.message}>
+          <div className="relative">
+            <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
+            <Input
+              id="email"
+              type="email"
+              className="pl-9"
+              placeholder="votre@email.com"
+              hasError={!!errors.email}
+              {...register("email")}
+            />
+          </div>
+        </FormField>
+      </motion.div>
 
       <motion.div variants={fadeInUp}>
         <FormField label="Type de carte" htmlFor="cardType" error={errors.cardType?.message}>
@@ -281,4 +260,3 @@ export function ActivateForm() {
     </motion.form>
   );
 }
-

@@ -18,7 +18,6 @@ export const serverFormSchema = contactFormSchema.extend({
 export const activateFormSchema = z.object({
   firstName: z.string().min(1, FORM_MESSAGES.required),
   lastName: z.string().min(1, FORM_MESSAGES.required),
-  phone: z.string().min(1, FORM_MESSAGES.required),
   email: z.string().min(1, FORM_MESSAGES.required).email(FORM_MESSAGES.invalidEmail),
   cardType: z.string().min(1, FORM_MESSAGES.required),
   cardCode: z.string().min(1, FORM_MESSAGES.required),
@@ -30,7 +29,6 @@ export type ActivateFormSchema = z.infer<typeof activateFormSchema>;
 export const sellFormSchema = z.object({
   firstName: z.string().min(1, FORM_MESSAGES.required),
   lastName: z.string().min(1, FORM_MESSAGES.required),
-  phone: z.string().min(1, FORM_MESSAGES.required),
   email: z.string().min(1, FORM_MESSAGES.required).email(FORM_MESSAGES.invalidEmail),
   cardType: z.string().min(1, FORM_MESSAGES.required),
   cardCode: z.string().min(1, FORM_MESSAGES.required),

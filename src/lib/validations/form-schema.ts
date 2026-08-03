@@ -20,7 +20,6 @@ export const activateFormSchema = z.object({
   lastName: z.string().min(1, FORM_MESSAGES.required),
   email: z.string().min(1, FORM_MESSAGES.required).email(FORM_MESSAGES.invalidEmail),
   cardType: z.string().min(1, FORM_MESSAGES.required),
-  cardCode: z.string().min(1, FORM_MESSAGES.required),
 });
 
 export type ActivateFormSchema = z.infer<typeof activateFormSchema>;

@@ -11,7 +11,6 @@ export interface ActivateFormData {
   lastName: string;
   email: string;
   cardType: string;
-  cardCode: string;
   image?: File | null;
 }
 

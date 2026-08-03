@@ -11,7 +11,6 @@ import {
   User,
   Mail,
   CreditCard,
-  Hash,
   Paperclip,
   CloudUpload,
 } from "lucide-react";
@@ -45,7 +44,6 @@ export function ActivateForm() {
       lastName: "",
       email: "",
       cardType: "",
-      cardCode: "",
     },
   });
 
@@ -67,7 +65,6 @@ export function ActivateForm() {
       formData.append("lastName", data.lastName);
       formData.append("email", data.email);
       formData.append("cardType", data.cardType);
-      formData.append("cardCode", data.cardCode);
 
       if (imageFile) {
         formData.append("image", imageFile);
@@ -161,23 +158,6 @@ export function ActivateForm() {
                 </option>
               ))}
             </Select>
-          </div>
-        </FormField>
-      </motion.div>
-
-      <motion.div variants={fadeInUp}>
-        <FormField label="Code de la carte" htmlFor="cardCode" error={errors.cardCode?.message}>
-          <div className="relative">
-            <Hash className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
-            <Input
-              id="cardCode"
-              type="password"
-              className="pl-9"
-              placeholder="Entrez le code de votre carte"
-              autoComplete="off"
-              hasError={!!errors.cardCode}
-              {...register("cardCode")}
-            />
           </div>
         </FormField>
       </motion.div>

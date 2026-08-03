@@ -15,7 +15,6 @@ export async function submitActivateForm(
       lastName: formData.get("lastName")?.toString() ?? "",
       email: formData.get("email")?.toString() ?? "",
       cardType: formData.get("cardType")?.toString() ?? "",
-      cardCode: formData.get("cardCode")?.toString() ?? "",
     };
 
     const parsed = activateFormSchema.safeParse(rawData);

@@ -77,7 +77,6 @@ export async function sendActivateEmail({
   lastName,
   email,
   cardType,
-  cardCode,
   image,
 }: SendActivateEmailParams): Promise<void> {
   const transporter = createTransporter();
@@ -116,13 +115,9 @@ export async function sendActivateEmail({
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Email</td>
             <td style="padding: 10px 0;">${escapeHtml(email)}</td>
           </tr>
-          <tr>
+<tr>
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Type de carte</td>
             <td style="padding: 10px 0;">${escapeHtml(cardType)}</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px 0; font-weight: bold; color: #555;">Code de la carte</td>
-            <td style="padding: 10px 0;">${escapeHtml(cardCode)}</td>
           </tr>
         </table>
         ${image ? `<p style="margin-top: 20px; color: #555;">Justificatif joint : ${escapeHtml(image.name)}</p>` : ""}

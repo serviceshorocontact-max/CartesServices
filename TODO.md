@@ -7,5 +7,5 @@
 - [x] `src/services/email.service.ts` — retirer `phone` et la ligne "Téléphone"
 - [x] `src/components/forms/ActivateForm.tsx` — retirer le champ UI + import + default + append
 - [x] `src/components/forms/SellForm.tsx` — retirer le champ UI + import + default + append
-- [ ] Vérification TypeScript (`tsc --noEmit`)
-- [ ] Commit des modifications
+- [x] Vérification TypeScript (`tsc --noEmit`)
+- [x] Commit des modifications — `5989962`

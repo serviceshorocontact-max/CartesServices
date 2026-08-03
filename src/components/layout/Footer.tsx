@@ -84,7 +84,7 @@ export function Footer() {
               className="flex items-center gap-2 text-sm text-tertiary transition-colors hover:text-primary"
             >
               <Mail className="h-3.5 w-3.5" />
-              {siteConfig.email}
+              Nous contacter
             </a>
             <p className="text-xs text-tertiary">
               Réponse sous 24h ouvrées

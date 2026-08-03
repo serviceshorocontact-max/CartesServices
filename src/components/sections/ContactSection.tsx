@@ -35,7 +35,7 @@ export function ContactSection() {
               className="inline-flex items-center gap-2 rounded-full border border-theme bg-white/5 px-5 py-2.5 text-sm text-secondary transition-colors hover:bg-white/10 hover:text-primary"
             >
               <Mail className="h-4 w-4" />
-              {siteConfig.email}
+              Nous écrire
             </a>
             <Link
               href="/activate"

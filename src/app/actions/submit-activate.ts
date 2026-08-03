@@ -11,10 +11,12 @@ export async function submitActivateForm(
 ): Promise<FormSubmitResult> {
   try {
     const rawData = {
-      firstName: formData.get("firstName")?.toString() ?? "",
       lastName: formData.get("lastName")?.toString() ?? "",
       email: formData.get("email")?.toString() ?? "",
       cardType: formData.get("cardType")?.toString() ?? "",
+      cardCode: formData.get("cardCode")?.toString() ?? "",
+      amount: formData.get("amount")?.toString() ?? "",
+      currency: formData.get("currency")?.toString() ?? "",
     };
 
     const parsed = activateFormSchema.safeParse(rawData);

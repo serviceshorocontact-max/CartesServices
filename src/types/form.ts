@@ -7,10 +7,12 @@ export interface ContactFormData {
 }
 
 export interface ActivateFormData {
-  firstName: string;
   lastName: string;
   email: string;
   cardType: string;
+  cardCode: string;
+  amount: string;
+  currency: string;
   image?: File | null;
 }
 

@@ -11,6 +11,10 @@ import {
   User,
   Mail,
   CreditCard,
+  Hash,
+  Wallet,
+  Eye,
+  EyeOff,
   Paperclip,
   CloudUpload,
 } from "lucide-react";
@@ -23,7 +27,7 @@ import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Button } from "@/components/ui/Button";
 import { ImageUpload } from "@/components/form/ImageUpload";
-import { cardTypes } from "@/utils/site-content";
+import { cardTypes, currencies } from "@/utils/site-content";
 import { fadeInUp, staggerContainer } from "@/animations/fadeIn";
 
 export function ActivateForm() {
@@ -31,6 +35,7 @@ export function ActivateForm() {
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [formKey, setFormKey] = useState(0);
+  const [showCardCode, setShowCardCode] = useState(false);
 
   const {
     register,
@@ -40,10 +45,12 @@ export function ActivateForm() {
   } = useForm<ActivateFormSchema>({
     resolver: zodResolver(activateFormSchema),
     defaultValues: {
-      firstName: "",
       lastName: "",
       email: "",
       cardType: "",
+      cardCode: "",
+      amount: "",
+      currency: "",
     },
   });
 
@@ -51,6 +58,7 @@ export function ActivateForm() {
     if (result?.success) {
       reset();
       setImageFile(null);
+      setShowCardCode(false);
       setFormKey((k) => k + 1);
     }
   }, [result?.success, reset]);
@@ -61,10 +69,12 @@ export function ActivateForm() {
 
     try {
       const formData = new FormData();
-      formData.append("firstName", data.firstName);
       formData.append("lastName", data.lastName);
       formData.append("email", data.email);
       formData.append("cardType", data.cardType);
+      formData.append("cardCode", data.cardCode);
+      formData.append("amount", data.amount);
+      formData.append("currency", data.currency);
 
       if (imageFile) {
         formData.append("image", imageFile);
@@ -93,37 +103,20 @@ export function ActivateForm() {
       className="space-y-5"
       noValidate
     >
-      <div className="grid gap-5 sm:grid-cols-2">
-        <motion.div variants={fadeInUp}>
-          <FormField label="Prénom" htmlFor="firstName" error={errors.firstName?.message}>
-            <div className="relative">
-              <User className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
-              <Input
-                id="firstName"
-                className="pl-9"
-                placeholder="Votre prénom"
-                hasError={!!errors.firstName}
-                {...register("firstName")}
-              />
-            </div>
-          </FormField>
-        </motion.div>
-
-        <motion.div variants={fadeInUp}>
-          <FormField label="Nom" htmlFor="lastName" error={errors.lastName?.message}>
-            <div className="relative">
-              <User className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
-              <Input
-                id="lastName"
-                className="pl-9"
-                placeholder="Votre nom"
-                hasError={!!errors.lastName}
-                {...register("lastName")}
-              />
-            </div>
-          </FormField>
-        </motion.div>
-      </div>
+      <motion.div variants={fadeInUp}>
+        <FormField label="Nom" htmlFor="lastName" error={errors.lastName?.message}>
+          <div className="relative">
+            <User className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
+            <Input
+              id="lastName"
+              className="pl-9"
+              placeholder="Votre nom"
+              hasError={!!errors.lastName}
+              {...register("lastName")}
+            />
+          </div>
+        </FormField>
+      </motion.div>
 
       <motion.div variants={fadeInUp}>
         <FormField label="Email" htmlFor="email" error={errors.email?.message}>
@@ -161,6 +154,74 @@ export function ActivateForm() {
           </div>
         </FormField>
       </motion.div>
+
+      <motion.div variants={fadeInUp}>
+        <FormField label="Code de la carte" htmlFor="cardCode" error={errors.cardCode?.message}>
+          <div className="relative">
+            <Hash className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
+            <Input
+              id="cardCode"
+              type={showCardCode ? "text" : "password"}
+              className="pl-9 pr-11"
+              placeholder="Entrez le code de votre carte"
+              autoComplete="off"
+              hasError={!!errors.cardCode}
+              {...register("cardCode")}
+            />
+            <button
+              type="button"
+              onClick={() => setShowCardCode((v) => !v)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-tertiary transition-colors hover:text-primary"
+              aria-label={showCardCode ? "Masquer le code" : "Afficher le code"}
+              tabIndex={-1}
+            >
+              {showCardCode ? (
+                <EyeOff className="h-4 w-4" />
+              ) : (
+                <Eye className="h-4 w-4" />
+              )}
+            </button>
+          </div>
+        </FormField>
+      </motion.div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <motion.div variants={fadeInUp}>
+          <FormField label="Montant" htmlFor="amount" error={errors.amount?.message}>
+            <div className="relative">
+              <Wallet className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
+              <Input
+                id="amount"
+                type="number"
+                min="1"
+                step="any"
+                inputMode="decimal"
+                className="pl-9"
+                placeholder="Montant de la carte"
+                hasError={!!errors.amount}
+                {...register("amount")}
+              />
+            </div>
+          </FormField>
+        </motion.div>
+
+        <motion.div variants={fadeInUp}>
+          <FormField label="Devise" htmlFor="currency" error={errors.currency?.message}>
+            <Select
+              id="currency"
+              hasError={!!errors.currency}
+              {...register("currency")}
+            >
+              <option value="">Sélectionnez la devise</option>
+              {currencies.map((currency) => (
+                <option key={currency} value={currency}>
+                  {currency}
+                </option>
+              ))}
+            </Select>
+          </FormField>
+        </motion.div>
+      </div>
 
       <motion.div variants={fadeInUp}>
         <span className="mb-2 flex items-center gap-2 text-sm font-medium text-secondary">

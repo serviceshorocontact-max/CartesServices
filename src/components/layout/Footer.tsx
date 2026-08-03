@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CreditCard, Mail, ScanLine, Repeat, Shield, FileText, Scale } from "lucide-react";
+import { CreditCard, ScanLine, Repeat, Shield, FileText, Scale } from "lucide-react";
 import { siteConfig } from "@/utils/site-content";
 
 export function Footer() {
@@ -34,20 +34,13 @@ export function Footer() {
               <ScanLine className="h-3.5 w-3.5" />
               Authentifier une carte
             </Link>
-            <Link
+<Link
               href="/sell"
               className="flex items-center gap-2 text-sm text-tertiary transition-colors hover:text-primary"
             >
               <Repeat className="h-3.5 w-3.5" />
               Revendre une carte
             </Link>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="flex items-center gap-2 text-sm text-tertiary transition-colors hover:text-primary"
-            >
-              <Mail className="h-3.5 w-3.5" />
-              Contact
-            </a>
           </div>
 
           {/* Colonne 3 : Informations légales */}
@@ -76,16 +69,9 @@ export function Footer() {
             </Link>
           </div>
 
-          {/* Colonne 4 : Contact */}
+{/* Colonne 4 : Contact */}
           <div className="flex flex-col gap-3">
             <h3 className="text-sm font-semibold text-primary">Contact</h3>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="flex items-center gap-2 text-sm text-tertiary transition-colors hover:text-primary"
-            >
-              <Mail className="h-3.5 w-3.5" />
-              {siteConfig.email}
-            </a>
             <p className="text-xs text-tertiary">
               Réponse sous 24h ouvrées
             </p>

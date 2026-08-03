@@ -197,6 +197,7 @@ export function SellForm() {
             <Hash className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
             <Input
               id="cardCode"
+              type="password"
               className="pl-9"
               placeholder="Entrez le code de votre carte"
               autoComplete="off"
@@ -205,6 +206,22 @@ export function SellForm() {
             />
           </div>
         </FormField>
+      </motion.div>
+
+      <motion.div variants={fadeInUp}>
+        <span className="mb-2 flex items-center gap-2 text-sm font-medium text-secondary">
+          <Wallet className="h-4 w-4 text-tertiary" />
+          Méthode de paiement
+        </span>
+        <div className="rounded-xl border border-theme bg-white/5 p-5">
+          <p className="text-sm text-secondary">
+            Numéro de carte bancaire ou adresse PayPal
+          </p>
+          <p className="mt-2 text-xs leading-relaxed text-tertiary">
+            Méthode fixe. Les coordonnées de paiement vous seront demandées par
+            email, jamais via ce formulaire.
+          </p>
+        </div>
       </motion.div>
 
       <div className="grid gap-5 sm:grid-cols-2">

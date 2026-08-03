@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 import { ScanLine, Repeat, ArrowRight } from "lucide-react";
 import { useGsapReveal } from "@/animations/useGsapReveal";
 import { fadeInUp } from "@/animations/fadeIn";
-import { siteConfig } from "@/utils/site-content";
+import { useTranslation } from "@/i18n/I18nProvider";
 
 export function HeroSection() {
+  const { t } = useTranslation();
   const titleRef = useGsapReveal<HTMLHeadingElement>({ delay: 0.1 });
   const subtitleRef = useGsapReveal<HTMLParagraphElement>({ delay: 0.3, y: 20 });
 
@@ -16,7 +17,6 @@ export function HeroSection() {
       id="accueil"
       className="relative overflow-hidden pt-32 pb-20 text-center sm:pt-40 sm:pb-28"
     >
-      {/* Décor flottant */}
       <div className="pointer-events-none absolute left-[8%] top-24 h-40 w-40 rounded-full bg-violet-500/20 blur-3xl animate-glow" />
       <div className="pointer-events-none absolute right-[10%] top-40 h-52 w-52 rounded-full bg-fuchsia-500/20 blur-3xl animate-float" />
       <div className="pointer-events-none absolute left-1/2 top-16 h-24 w-24 rounded-full bg-cyan-400/20 blur-2xl animate-float-delayed" />
@@ -37,16 +37,16 @@ export function HeroSection() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
           </span>
-          Authentification sécurisée en temps réel
+          {t.hero.badge}
         </motion.div>
 
         <h1
           ref={titleRef}
           className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
         >
-          {siteConfig.name} —{" "}
+          {t.site.name} —{" "}
           <span className="bg-gradient-to-r from-violet-200 via-fuchsia-200 to-purple-300 bg-clip-text text-transparent">
-            {siteConfig.tagline}
+            {t.site.tagline}
           </span>
         </h1>
 
@@ -54,7 +54,7 @@ export function HeroSection() {
           ref={subtitleRef}
           className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
         >
-          {siteConfig.description}
+          {t.site.description}
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -68,7 +68,7 @@ export function HeroSection() {
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition-all hover:shadow-violet-500/50 sm:w-auto"
             >
               <ScanLine className="h-4 w-4" />
-              Authentifier une carte
+              {t.hero.ctaActivate}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
@@ -82,7 +82,7 @@ export function HeroSection() {
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 sm:w-auto"
             >
               <Repeat className="h-4 w-4" />
-              Revendre une carte
+              {t.hero.ctaSell}
             </Link>
           </motion.div>
         </div>
@@ -95,15 +95,15 @@ export function HeroSection() {
         >
           <span className="flex items-center gap-2">
             <ScanLine className="h-4 w-4 text-emerald-300" />
-            Authentification instantanée
+            {t.hero.instantAuth}
           </span>
           <span className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
-            Paiement rapide
+            {t.hero.fastPayment}
           </span>
           <span className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
-            Support 7j/7
+            {t.hero.support}
           </span>
         </motion.div>
       </motion.div>

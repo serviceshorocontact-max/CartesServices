@@ -5,11 +5,13 @@ import { ScanLine, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { ContactForm } from "@/components/form/ContactForm";
 import { fadeInUp } from "@/animations/fadeIn";
+import { useTranslation } from "@/i18n/I18nProvider";
 
 export function ContactSection() {
+  const { t } = useTranslation();
+
   return (
     <section id="contact" className="contact-bg relative py-16 sm:py-20">
-      {/* Overlay pour lisibilité */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[var(--background)] via-[var(--background)]/80 to-[var(--background)]" />
 
       <motion.div
@@ -20,12 +22,11 @@ export function ContactSection() {
         className="relative glass-card rounded-3xl p-6 sm:p-10"
       >
         <div className="mb-8 text-center">
-<h2 className="text-2xl font-bold text-primary sm:text-3xl">
-            Besoin d&lsquo;aide ?
+          <h2 className="text-2xl font-bold text-primary sm:text-3xl">
+            {t.contact.title}
           </h2>
-<p className="mt-3 text-sm text-secondary sm:text-base">
-            Notre équipe est là pour vous accompagner. Contactez-nous via le
-            formulaire ci-dessous.
+          <p className="mt-3 text-sm text-secondary sm:text-base">
+            {t.contact.subtitle}
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
@@ -34,7 +35,7 @@ export function ContactSection() {
               className="inline-flex items-center gap-2 rounded-full border border-theme bg-white/5 px-5 py-2.5 text-sm text-secondary transition-colors hover:bg-white/10 hover:text-primary"
             >
               <ScanLine className="h-4 w-4" />
-              Authentifier une carte
+              {t.contact.ctaActivate}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

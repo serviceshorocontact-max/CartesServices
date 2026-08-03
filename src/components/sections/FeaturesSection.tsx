@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ShieldCheck, Gift, CheckCircle2 } from "lucide-react";
-import { features } from "@/utils/site-content";
 import { fadeInUp, staggerContainer } from "@/animations/fadeIn";
+import { useTranslation } from "@/i18n/I18nProvider";
 
 const iconMap = {
   shield: ShieldCheck,
@@ -11,7 +11,17 @@ const iconMap = {
   check: CheckCircle2,
 };
 
+const featureKeys = ["security", "variety", "simplicity"] as const;
+const featureColors = [
+  "from-cyan-400 to-blue-500",
+  "from-emerald-400 to-green-500",
+  "from-pink-400 to-rose-500",
+];
+const featureIcons = ["shield", "gift", "check"] as const;
+
 export function FeaturesSection() {
+  const { t } = useTranslation();
+
   return (
     <section id="services" className="py-16 sm:py-20">
       <motion.div
@@ -21,16 +31,17 @@ export function FeaturesSection() {
         viewport={{ once: true, margin: "-80px" }}
         className="grid gap-6 sm:grid-cols-3"
       >
-        {features.map((feature) => {
-          const Icon = iconMap[feature.icon];
+        {featureKeys.map((key, index) => {
+          const Icon = iconMap[featureIcons[index]];
+          const feature = t.features[key];
           return (
             <motion.div
-              key={feature.title}
+              key={key}
               variants={fadeInUp}
               className="glass-card hover-lift rounded-2xl p-6 text-center sm:p-8"
             >
               <div
-                className={`mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.color} shadow-lg`}
+                className={`mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${featureColors[index]} shadow-lg`}
               >
                 <Icon className="h-7 w-7 text-white" />
               </div>

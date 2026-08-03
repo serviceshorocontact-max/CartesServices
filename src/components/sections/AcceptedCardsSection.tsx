@@ -2,10 +2,20 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { acceptedCards, cardBrands } from "@/utils/site-content";
+import { cardBrands } from "@/utils/site-content";
 import { fadeInUp, staggerContainer } from "@/animations/fadeIn";
+import { useTranslation } from "@/i18n/I18nProvider";
+
+const cardImages = [
+  "/cards/carte0.jpg",
+  "/cards/carte1.jpg",
+  "/cards/carte2.jpg",
+  "/cards/carte3.jpg",
+];
 
 export function AcceptedCardsSection() {
+  const { t } = useTranslation();
+
   return (
     <section id="cartes" className="py-16 sm:py-20">
       <motion.div
@@ -19,20 +29,20 @@ export function AcceptedCardsSection() {
           variants={fadeInUp}
           className="mb-2 text-center text-2xl font-bold text-primary sm:text-3xl"
         >
-          Cartes acceptées
+          {t.acceptedCards.title}
         </motion.h2>
         <motion.p
           variants={fadeInUp}
           className="mb-10 text-center text-sm text-secondary"
         >
-          Transcash, PCS, Steam, Paysafecard et bien plus encore
+          {t.acceptedCards.subtitle}
         </motion.p>
 
         <motion.div
           variants={staggerContainer}
           className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {acceptedCards.map((card) => (
+          {t.acceptedCards.cards.map((card, index) => (
             <motion.div
               key={card.name}
               variants={fadeInUp}
@@ -40,7 +50,7 @@ export function AcceptedCardsSection() {
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-zinc-900">
                 <Image
-                  src={card.image}
+                  src={cardImages[index]}
                   alt={card.name}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"

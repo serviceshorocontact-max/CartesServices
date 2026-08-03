@@ -4,13 +4,21 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { CreditCard, ScanLine, Repeat, Menu, X, Home } from "lucide-react";
-import { navLinks, siteConfig } from "@/utils/site-content";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { useTranslation } from "@/i18n/I18nProvider";
 
 export function Navbar() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const navLinks = [
+    { label: t.nav.home, href: "/", icon: "home" as const },
+    { label: t.nav.activate, href: "/activate", icon: "activate" as const },
+    { label: t.nav.sell, href: "/sell", icon: "sell" as const },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -46,13 +54,13 @@ export function Navbar() {
           className="flex items-center gap-2 text-sm font-semibold text-primary sm:text-base"
         >
           <CreditCard className="h-5 w-5 text-violet-400" />
-          {siteConfig.name}
+          {t.site.name}
         </Link>
 
         <div className="hidden items-center gap-1 rounded-full border border-theme bg-white/5 p-1 backdrop-blur-md md:flex">
           {navLinks.map((link) => (
             <Link
-              key={link.label}
+              key={link.href}
               href={link.href}
               className="flex items-center gap-2 rounded-full px-4 py-2 text-sm text-secondary transition-colors hover:bg-white/10 hover:text-primary"
             >
@@ -63,12 +71,13 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
+          <LanguageSwitcher />
           <ThemeToggle />
           <button
             type="button"
             className="rounded-lg p-2 text-primary md:hidden"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Menu"
+            aria-label={t.nav.menu}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -86,7 +95,7 @@ export function Navbar() {
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link
-                  key={link.label}
+                  key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
                   className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-secondary transition-colors hover:bg-white/10"

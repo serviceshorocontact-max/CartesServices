@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Search, KeyRound, CheckCircle2 } from "lucide-react";
 import { howItWorks } from "@/utils/site-content";
 import { fadeInUp, staggerContainer } from "@/animations/fadeIn";
+import { useTranslation } from "@/i18n/I18nProvider";
 
 const iconMap = {
   search: Search,
@@ -13,6 +14,8 @@ const iconMap = {
 };
 
 export function HowItWorksSection() {
+  const { t } = useTranslation();
+
   return (
     <section id="comment-ca-marche" className="py-16 sm:py-20">
       <motion.div
@@ -23,16 +26,17 @@ export function HowItWorksSection() {
       >
         <motion.div variants={fadeInUp} className="mb-12 text-center">
           <h2 className="text-2xl font-bold text-primary sm:text-3xl">
-            Comment ça marche ?
+            {t.howItWorks.title}
           </h2>
           <p className="mt-3 text-sm text-secondary sm:text-base">
-            Authentifiez vos cartes en 3 étapes simples et rapides
+            {t.howItWorks.subtitle}
           </p>
         </motion.div>
 
         <div className="grid gap-8 sm:grid-cols-3">
           {howItWorks.map((step, index) => {
             const Icon = iconMap[step.icon];
+            const translatedStep = t.howItWorks.steps[index];
             return (
               <motion.div
                 key={step.step}
@@ -43,7 +47,7 @@ export function HowItWorksSection() {
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={step.image}
-                      alt={step.title}
+                      alt={translatedStep.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, 33vw"
@@ -54,7 +58,7 @@ export function HowItWorksSection() {
                         {step.step}
                       </span>
                       <span className="text-xs font-medium text-white/80">
-                        Étape {step.step}
+                        {t.howItWorks.step} {step.step}
                       </span>
                     </div>
                   </div>
@@ -63,15 +67,14 @@ export function HowItWorksSection() {
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="text-base font-semibold text-primary">
-                      {step.title}
+                      {translatedStep.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-tertiary">
-                      {step.description}
+                      {translatedStep.description}
                     </p>
                   </div>
                 </div>
 
-                {/* Ligne de connexion entre les étapes */}
                 {index < howItWorks.length - 1 && (
                   <div className="absolute -right-4 top-1/3 hidden h-0.5 w-8 bg-gradient-to-r from-violet-500/40 to-transparent sm:block" />
                 )}

@@ -2,10 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-import { testimonials } from "@/utils/site-content";
 import { fadeInUp, staggerContainer } from "@/animations/fadeIn";
+import { useTranslation } from "@/i18n/I18nProvider";
+
+const initials = ["J", "M", "A"];
 
 export function TestimonialsSection() {
+  const { t } = useTranslation();
+
   return (
     <section id="temoignages" className="py-16 sm:py-20">
       <motion.div
@@ -19,11 +23,11 @@ export function TestimonialsSection() {
           variants={fadeInUp}
           className="mb-10 text-center text-2xl font-bold text-primary sm:text-3xl"
         >
-          Ce que nos clients disent
+          {t.testimonials.title}
         </motion.h2>
 
         <div className="grid gap-6 sm:grid-cols-3">
-          {testimonials.map((item) => (
+          {t.testimonials.items.map((item, index) => (
             <motion.div
               key={item.author}
               variants={fadeInUp}
@@ -42,7 +46,7 @@ export function TestimonialsSection() {
               </p>
               <div className="mt-5 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-purple-600 text-sm font-bold text-white">
-                  {item.initial}
+                  {initials[index]}
                 </div>
                 <span className="text-sm font-medium text-primary">
                   {item.author}

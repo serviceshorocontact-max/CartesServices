@@ -3,18 +3,30 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { acceptedCards, cardBrands } from "@/utils/site-content";
+import { cardBrands } from "@/utils/site-content";
+import { useTranslation } from "@/i18n/I18nProvider";
 
 const CARD_WIDTH = 220;
 const GAP = 24;
 const DURATION = 25;
 
+const cardImages = [
+  "/cards/carte0.jpg",
+  "/cards/carte1.jpg",
+  "/cards/carte2.jpg",
+  "/cards/carte3.jpg",
+];
+
 export function FeaturedCardsCarousel() {
+  const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
-  // Dupliquer les cartes pour un défilement infini
-  const allCards = [...acceptedCards, ...acceptedCards, ...acceptedCards];
+  const allCards = [
+    ...t.acceptedCards.cards,
+    ...t.acceptedCards.cards,
+    ...t.acceptedCards.cards,
+  ];
 
   return (
     <section id="cartes-carousel" className="py-12 sm:py-16">
@@ -27,17 +39,15 @@ export function FeaturedCardsCarousel() {
           className="mb-8 text-center"
         >
           <h2 className="text-2xl font-bold text-primary sm:text-3xl">
-            Cartes acceptées
+            {t.acceptedCards.title}
           </h2>
           <p className="mt-3 text-sm text-secondary">
-            Transcash, PCS, Steam, Paysafecard, Neosurf et bien plus encore
+            {t.acceptedCards.subtitle}
           </p>
         </motion.div>
       </div>
 
-      {/* Carrousel horizontal */}
       <div className="relative overflow-hidden">
-        {/* Gradient edges */}
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[var(--background)] to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[var(--background)] to-transparent" />
 
@@ -64,7 +74,7 @@ export function FeaturedCardsCarousel() {
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-zinc-900">
                   <Image
-                    src={card.image}
+                    src={cardImages[index % cardImages.length]}
                     alt={card.name}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -86,7 +96,6 @@ export function FeaturedCardsCarousel() {
         )}
       </div>
 
-      {/* Badges des marques */}
       <div className="mx-auto mt-10 max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

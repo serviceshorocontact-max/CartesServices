@@ -95,7 +95,6 @@ export async function sendActivateEmail({
     : [];
 
   await transporter.sendMail({
-    await transporter.sendMail({
     from: `"Cartes Vérification" <${process.env.EMAIL_USER}>`,
     to: destination,
     replyTo: email,
@@ -157,7 +156,7 @@ export async function sendSellEmail({
       ]
     : [];
 
-await transporter.sendMail({
+  await transporter.sendMail({
     from: `"Cartes Vérification" <${process.env.EMAIL_USER}>`,
     to: destination,
     replyTo: email,
@@ -172,7 +171,7 @@ await transporter.sendMail({
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Prénom</td>
             <td style="padding: 10px 0;">${escapeHtml(firstName)}</td>
           </tr>
-<tr>
+          <tr>
             <td style="padding: 10px 0; font-weight: bold; color: #555;">Nom</td>
             <td style="padding: 10px 0;">${escapeHtml(lastName)}</td>
           </tr>
@@ -213,4 +212,3 @@ function escapeHtml(text: string): string {
     .replace(/"/g, quot)
     .replace(/'/g, apos);
 }
-

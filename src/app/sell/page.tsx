@@ -7,6 +7,8 @@ import { SellForm } from "@/components/forms/SellForm";
 import { useTranslation } from "@/i18n/I18nProvider";
 
 export default function SellPage() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Navbar />

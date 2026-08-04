@@ -1,4 +1,4 @@
-export type Locale = "fr" | "it" | "de";
+export type Locale = "fr" | "en" | "it" | "sp" | "de";
 
 export interface LocaleInfo {
   code: Locale;

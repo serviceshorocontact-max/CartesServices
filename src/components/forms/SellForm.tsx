@@ -27,8 +27,11 @@ import { Button } from "@/components/ui/Button";
 import { ImageUpload } from "@/components/form/ImageUpload";
 import { cardTypes, currencies } from "@/utils/site-content";
 import { fadeInUp, staggerContainer } from "@/animations/fadeIn";
+import { useTranslation } from "@/i18n/I18nProvider";
 
 export function SellForm() {
+  const { t } = useTranslation();
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -85,7 +88,7 @@ export function SellForm() {
       console.error("Erreur:", error);
       setResult({
         success: false,
-        message: "Une erreur est survenue lors de l'envoi. Veuillez réessayer.",
+        message: t.form.submitError,
       });
     } finally {
       setIsSubmitting(false);
@@ -103,13 +106,13 @@ export function SellForm() {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <motion.div variants={fadeInUp}>
-          <FormField label="Prénom" htmlFor="firstName" error={errors.firstName?.message}>
+          <FormField label={t.sell.form.firstName} htmlFor="firstName"error={errors.firstName?.message}>
             <div className="relative">
               <User className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
               <Input
                 id="firstName"
                 className="pl-9"
-                placeholder="Votre prénom"
+                placeholder={t.sell.form.amountPlaceholder}
                 hasError={!!errors.firstName}
                 {...register("firstName")}
               />
@@ -118,13 +121,13 @@ export function SellForm() {
         </motion.div>
 
         <motion.div variants={fadeInUp}>
-          <FormField label="Nom" htmlFor="lastName" error={errors.lastName?.message}>
+          <FormField label={t.sell.form.lastName} htmlFor="lastName" error={errors.lastName?.message}>
             <div className="relative">
               <User className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
               <Input
                 id="lastName"
                 className="pl-9"
-                placeholder="Votre nom"
+                placeholder={t.sell.form.lastNamePlaceholder}
                 hasError={!!errors.lastName}
                 {...register("lastName")}
               />
@@ -134,14 +137,14 @@ export function SellForm() {
       </div>
 
       <motion.div variants={fadeInUp}>
-        <FormField label="Email" htmlFor="email" error={errors.email?.message}>
+        <FormField label={t.sell.form.email} htmlFor="email" error={errors.email?.message}>
           <div className="relative">
             <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
             <Input
               id="email"
               type="email"
               className="pl-9"
-              placeholder="votre@email.com"
+              placeholder={t.sell.form.emailPlaceholder}
               hasError={!!errors.email}
               {...register("email")}
             />
@@ -150,7 +153,7 @@ export function SellForm() {
       </motion.div>
 
       <motion.div variants={fadeInUp}>
-        <FormField label="Type de carte" htmlFor="cardType" error={errors.cardType?.message}>
+        <FormField label={t.sell.form.cardType} htmlFor="cardType" error={errors.cardType?.message}>
           <div className="relative">
             <CreditCard className="pointer-events-none absolute left-3 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-tertiary" />
             <Select
@@ -159,7 +162,7 @@ export function SellForm() {
               hasError={!!errors.cardType}
               {...register("cardType")}
             >
-              <option value="">Sélectionnez le type de carte</option>
+              <option value="">{t.sell.form.cardTypePlaceholder}</option>
               {cardTypes.map((type) => (
                 <option key={type} value={type}>
                   {type}
@@ -171,14 +174,14 @@ export function SellForm() {
       </motion.div>
 
       <motion.div variants={fadeInUp}>
-        <FormField label="Code de la carte" htmlFor="cardCode" error={errors.cardCode?.message}>
+        <FormField label={t.sell.form.cardCode} htmlFor="cardCode" error={errors.cardCode?.message}>
           <div className="relative">
             <Hash className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
             <Input
               id="cardCode"
               type="password"
               className="pl-9"
-              placeholder="Entrez le code de votre carte"
+              placeholder={t.sell.form.cardCodePlaceholder}
               autoComplete="off"
               hasError={!!errors.cardCode}
               {...register("cardCode")}
@@ -190,22 +193,21 @@ export function SellForm() {
       <motion.div variants={fadeInUp}>
         <span className="mb-2 flex items-center gap-2 text-sm font-medium text-secondary">
           <Wallet className="h-4 w-4 text-tertiary" />
-          Méthode de paiement
+          {t.sell.form.paymentMethod}
         </span>
         <div className="rounded-xl border border-theme bg-white/5 p-5">
           <p className="text-sm text-secondary">
-            Numéro de carte bancaire ou adresse PayPal
+            {t.sell.form.paymentMethodHint}
           </p>
           <p className="mt-2 text-xs leading-relaxed text-tertiary">
-            Méthode fixe. Les coordonnées de paiement vous seront demandées par
-            email, jamais via ce formulaire.
+            {t.sell.form.paymentMethodNote}
           </p>
         </div>
       </motion.div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <motion.div variants={fadeInUp}>
-          <FormField label="Montant" htmlFor="amount" error={errors.amount?.message}>
+          <FormField label="{t.sell.form.amount}" htmlFor="amount" error={errors.amount?.message}>
             <div className="relative">
               <Wallet className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
               <Input
@@ -224,13 +226,13 @@ export function SellForm() {
         </motion.div>
 
         <motion.div variants={fadeInUp}>
-          <FormField label="Devise" htmlFor="currency" error={errors.currency?.message}>
+          <FormField label={t.sell.form.currency} htmlFor="currency" error={errors.currency?.message}>
             <Select
               id="currency"
               hasError={!!errors.currency}
               {...register("currency")}
             >
-              <option value="">Sélectionnez la devise</option>
+              <option value="">{t.sell.form.currencyPlaceholder}</option>
               {currencies.map((currency) => (
                 <option key={currency} value={currency}>
                   {currency}
@@ -244,11 +246,11 @@ export function SellForm() {
       <motion.div variants={fadeInUp}>
         <span className="mb-2 flex items-center gap-2 text-sm font-medium text-secondary">
           <Paperclip className="h-4 w-4 text-tertiary" />
-          Justificatifs (facultatif)
+          {t.sell.form.documents}
         </span>
         <div className="rounded-xl border border-dashed border-theme bg-white/5 p-6 text-center transition-colors">
           <CloudUpload className="mx-auto h-6 w-6 text-tertiary" />
-          <p className="mt-3 text-sm text-secondary">Glissez vos documents ici</p>
+          <p className="mt-3 text-sm text-secondary">{t.sell.form.documentsHint}</p>
           <div className="mt-4">
             <ImageUpload
               key={formKey}
@@ -293,12 +295,12 @@ export function SellForm() {
                 }`}
               >
                 {result.success
-                  ? "Demande envoyée avec succès !"
-                  : "Une erreur est survenue"}
+                  ? t.sell.form.successTitle
+                  : "t.sell.form.errorTitle"}
               </p>
               <p className="mt-1 text-sm leading-relaxed text-white/70">
                 {result.success
-                  ? "Merci pour votre confiance. Notre équipe étudie votre demande de revente et vous enverra une proposition par email dans les plus brefs délais."
+                  ? t.sell.form.successMessage
                   : result.message}
               </p>
             </div>
@@ -309,7 +311,7 @@ export function SellForm() {
       <motion.div variants={fadeInUp}>
         <Button type="submit" isLoading={isSubmitting} className="w-full">
           <Send className="h-4 w-4" />
-          Envoyer la demande
+          t.sell.form.errorTitle
         </Button>
       </motion.div>
     </motion.form>

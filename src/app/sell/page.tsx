@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Repeat, ShieldCheck, Clock, TrendingUp } from "lucide-react";
 import { SellForm } from "@/components/forms/SellForm";
+import { useTranslation } from "@/i18n/I18nProvider";
 
 export default function SellPage() {
   return (
@@ -17,12 +18,11 @@ export default function SellPage() {
                   <span className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/15 text-violet-400">
                     <Repeat className="h-6 w-6" />
                   </span>
-                  <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                    Revendre une carte
+                  <h1>
+                    {t.sell.title}
                   </h1>
-                  <p className="mt-3 text-base leading-relaxed text-white/70">
-                    Remplissez le formulaire ci-dessous pour nous proposer votre
-                    carte à la revente.
+                  <p>
+                    {t.sell.subtitle}
                   </p>
                 </div>
 
@@ -30,22 +30,22 @@ export default function SellPage() {
                   <div className="flex items-start gap-4 rounded-xl border border-white/10 bg-white/5 p-5">
                     <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-emerald-400" />
                     <div>
-                      <p className="text-sm font-medium text-white">
-                        Transaction sécurisée
-                      </p>
-                      <p className="mt-1 text-xs leading-relaxed text-white/50">
-                        Paiement sécurisé, vos données sont protégées.
-                      </p>
+                      <h3>
+                        {t.sell.secure.title}
+                      </h3>
+                      <p>
+                        {t.sell.secure.description}
+                        </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4 rounded-xl border border-white/10 bg-white/5 p-5">
                     <Clock className="mt-0.5 h-5 w-5 shrink-0 text-amber-400" />
                     <div>
                       <p className="text-sm font-medium text-white">
-                        Paiement rapide
+                        {t.sell.fast.title}
                       </p>
                       <p className="mt-1 text-xs leading-relaxed text-white/50">
-                        Recevez votre paiement sous 24h après validation.
+                        {t.sell.fast.description}
                       </p>
                     </div>
                   </div>
@@ -53,10 +53,10 @@ export default function SellPage() {
                     <TrendingUp className="mt-0.5 h-5 w-5 shrink-0 text-emerald-400" />
                     <div>
                       <p className="text-sm font-medium text-white">
-                        Meilleurs taux
+                        {t.sell.rates.title}
                       </p>
                       <p className="mt-1 text-xs leading-relaxed text-white/50">
-                        Nous proposons les meilleurs taux du marché.
+                        {t.sell.rates.description}
                       </p>
                     </div>
                   </div>

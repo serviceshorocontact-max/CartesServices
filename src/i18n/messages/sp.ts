@@ -210,8 +210,6 @@ export const es: Messages = {
       metaDescription:
         "Política de privacidad de Cartes Vérification: protección de sus datos personales.",
       lastUpdated: "Última actualización: 1 de agosto de 2026",
-      disclaimer:
-        "Este documento es una plantilla que debe adaptarse a su situación. Hágala revisar por un experto legal antes de publicarla.",
       sections: [
         {
           title: "1. Responsable del tratamiento",
@@ -255,8 +253,6 @@ export const es: Messages = {
       metaDescription:
         "Aviso legal de Cartes Vérification: información sobre el editor y el proveedor de alojamiento.",
       lastUpdated: "Última actualización: 1 de agosto de 2026",
-      disclaimer:
-        "Este documento es una plantilla que debe adaptarse a su situación. Hágala revisar por un experto legal antes de publicarla.",
       sections: [
         {
           title: "1. Editor del sitio web",
@@ -294,8 +290,6 @@ export const es: Messages = {
       metaDescription:
         "Términos y condiciones de Cartes Vérification: normas de acceso y uso del servicio.",
       lastUpdated: "Última actualización: 1 de agosto de 2026",
-      disclaimer:
-        "Este documento es una plantilla que debe adaptarse a su situación. Hágala revisar por un experto legal antes de publicarla.",
       sections: [
         {
           title: "1. Objeto",

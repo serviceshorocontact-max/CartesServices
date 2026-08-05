@@ -19,9 +19,6 @@ export function LegalPageLayout({ content }: LegalPageProps) {
               {content.title}
             </h1>
             <p className="mt-3 text-sm text-tertiary">{content.lastUpdated}</p>
-            <p className="mt-4 rounded-xl border border-amber-500/20 bg-amber-500/5 px-4 py-3 text-xs leading-relaxed text-amber-200/80">
-              {content.disclaimer}
-            </p>
           </header>
 
           <div className="space-y-8">

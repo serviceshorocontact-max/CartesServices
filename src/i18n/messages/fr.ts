@@ -210,8 +210,6 @@ export const fr: Messages = {
       metaDescription:
         "Politique de confidentialité de Cartes Vérification – protection de vos données personnelles.",
       lastUpdated: "Dernière mise à jour : 1er août 2026",
-      disclaimer:
-        "Ce document est un modèle à adapter à votre situation. Faites-le relire par un professionnel du droit avant mise en ligne.",
       sections: [
         {
           title: "1. Responsable du traitement",
@@ -255,8 +253,6 @@ export const fr: Messages = {
       metaDescription:
         "Mentions légales de Cartes Vérification – informations sur l'éditeur et l'hébergeur du site.",
       lastUpdated: "Dernière mise à jour : 1er août 2026",
-      disclaimer:
-        "Ce document est un modèle à adapter à votre situation. Faites-le relire par un professionnel du droit avant mise en ligne.",
       sections: [
         {
           title: "1. Éditeur du site",
@@ -294,8 +290,6 @@ export const fr: Messages = {
       metaDescription:
         "Conditions générales d'utilisation de Cartes Vérification – règles d'accès et d'utilisation du service.",
       lastUpdated: "Dernière mise à jour : 1er août 2026",
-      disclaimer:
-        "Ce document est un modèle à adapter à votre situation. Faites-le relire par un professionnel du droit avant mise en ligne.",
       sections: [
         {
           title: "1. Objet",

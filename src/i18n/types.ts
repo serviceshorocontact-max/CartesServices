@@ -15,7 +15,6 @@ export interface LegalPageContent {
   title: string;
   metaDescription: string;
   lastUpdated: string;
-  disclaimer: string;
   sections: LegalSection[];
 }
 

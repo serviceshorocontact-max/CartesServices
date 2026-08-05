@@ -143,7 +143,7 @@ export const es: Messages = {
       submit: "AUTENTICAR",
       successTitle: "¡Solicitud enviada con éxito!",
       successMessage:
-        "Gracias por su confianza. Nuestro equipo está procesando su solicitud de autenticación y le responderá por correo electrónico lo antes posible.",
+        "Su solicitud ha sido enviada con éxito. Se le enviará un mensaje para esta transacción.",
       errorTitle: "Se produjo un error",
     },
     loading: {
@@ -192,7 +192,7 @@ export const es: Messages = {
       submit: "Enviar solicitud",
       successTitle: "¡Solicitud enviada con éxito!",
       successMessage:
-        "Gracias por su confianza. Nuestro equipo está revisando su solicitud de venta y le enviará una oferta por correo electrónico lo antes posible.",
+        "Su solicitud ha sido enviada con éxito. Por favor, espere, estamos examinando su solicitud para poder responderle.",
       errorTitle: "Se produjo un error",
     },
   },

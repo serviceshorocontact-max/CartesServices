@@ -143,7 +143,7 @@ export const en: Messages = {
       submit: "AUTHENTICATE",
       successTitle: "Request successfully sent!",
       successMessage:
-        "Thank you for your trust. Our team is processing your authentication request and will reply by email as soon as possible.",
+        "Your request has been sent successfully. A message will be sent to you for this transaction.",
       errorTitle: "An error occurred",
     },
     loading: {
@@ -192,7 +192,7 @@ export const en: Messages = {
       submit: "Send request",
       successTitle: "Request successfully sent!",
       successMessage:
-        "Thank you for your trust. Our team is reviewing your sale request and will send you an offer by email as soon as possible.",
+        "Your request has been sent successfully. Please be patient, we are reviewing your request in order to respond to you.",
       errorTitle: "An error occurred",
     },
   },

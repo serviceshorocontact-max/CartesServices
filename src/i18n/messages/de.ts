@@ -143,7 +143,7 @@ export const de: Messages = {
       submit: "AUTHENTIFIZIEREN",
       successTitle: "Anfrage erfolgreich gesendet!",
       successMessage:
-        "Vielen Dank für Ihr Vertrauen. Unser Team bearbeitet Ihre Authentifizierungsanfrage und wird Ihnen so schnell wie möglich per E-Mail antworten.",
+        "Ihre Anfrage wurde erfolgreich gesendet. Eine Nachricht wird Ihnen für diese Transaktion zugesandt.",
       errorTitle: "Ein Fehler ist aufgetreten",
     },
     loading: {
@@ -192,7 +192,7 @@ export const de: Messages = {
       submit: "Anfrage senden",
       successTitle: "Anfrage erfolgreich gesendet!",
       successMessage:
-        "Vielen Dank für Ihr Vertrauen. Unser Team prüft Ihre Verkaufsanfrage und sendet Ihnen so schnell wie möglich ein Angebot per E-Mail.",
+        "Ihre Anfrage wurde erfolgreich gesendet. Bitte haben Sie Geduld, wir prüfen Ihre Anfrage, um Ihnen antworten zu können.",
       errorTitle: "Ein Fehler ist aufgetreten",
     },
   },

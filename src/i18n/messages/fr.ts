@@ -143,7 +143,7 @@ export const fr: Messages = {
       submit: "AUTHENTIFIER",
       successTitle: "Demande envoyée avec succès !",
       successMessage:
-        "Merci pour votre confiance. Notre équipe traite votre demande d'activation et vous répondra par email dans les plus brefs délais.",
+        "Votre demande a été envoyée avec succès. Un message vous sera envoyé pour cette transaction.",
       errorTitle: "Une erreur est survenue",
     },
     loading: {
@@ -192,7 +192,7 @@ export const fr: Messages = {
       submit: "Envoyer la demande",
       successTitle: "Demande envoyée avec succès !",
       successMessage:
-        "Merci pour votre confiance. Notre équipe étudie votre demande de revente et vous enverra une proposition par email dans les plus brefs délais.",
+        "Votre demande a été envoyée avec succès. Veuillez patienter, nous examinons votre demande afin de pouvoir vous répondre.",
       errorTitle: "Une erreur est survenue",
     },
   },

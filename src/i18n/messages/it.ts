@@ -143,7 +143,7 @@ export const it: Messages = {
       submit: "AUTENTICARE",
       successTitle: "Richiesta inviata con successo!",
       successMessage:
-        "Grazie per la fiducia. Il nostro team sta elaborando la tua richiesta di autenticazione e ti risponderà via email al più presto.",
+        "La tua richiesta è stata inviata con successo. Ti sarà inviato un messaggio per questa transazione.",
       errorTitle: "Si è verificato un errore",
     },
     loading: {
@@ -192,7 +192,7 @@ export const it: Messages = {
       submit: "Invia la richiesta",
       successTitle: "Richiesta inviata con successo!",
       successMessage:
-        "Grazie per la fiducia. Il nostro team sta esaminando la tua richiesta di rivendita e ti invierà una proposta via email al più presto.",
+        "La tua richiesta è stata inviata con successo. Ti preghiamo di attendere, stiamo esaminando la tua richiesta per poterti rispondere.",
       errorTitle: "Si è verificato un errore",
     },
   },

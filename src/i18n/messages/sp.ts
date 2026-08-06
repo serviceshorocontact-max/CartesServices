@@ -151,6 +151,11 @@ export const es: Messages = {
       subtitle: "Verificación segura en curso...",
       wait: "Por favor espere...",
     },
+    success: {
+      title: "Autenticación de su tarjeta exitosa",
+      message: "Por favor, espere, le responderemos en unos instantes.",
+      goHome: "Volver al inicio",
+    },
   },
   sell: {
     title: "Vender tarjeta",

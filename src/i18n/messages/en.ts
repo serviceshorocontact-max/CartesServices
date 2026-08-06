@@ -145,11 +145,16 @@ export const en: Messages = {
       successMessage:
         "Your request has been sent successfully. A message will be sent to you for this transaction.",
       errorTitle: "An error occurred",
-    },
+},
     loading: {
       title: "Authenticating your card...",
       subtitle: "Secure verification in progress...",
       wait: "Please wait...",
+    },
+    success: {
+      title: "Your card authentication was successful",
+      message: "Thank you for your patience, we will respond within a few moments.",
+      goHome: "Back to home",
     },
   },
   sell: {

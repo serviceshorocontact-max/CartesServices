@@ -95,7 +95,7 @@ export interface Messages {
       currencyPlaceholder: string;
       documents: string;
       documentsHint: string;
-      submit: string;
+submit: string;
       successTitle: string;
       successMessage: string;
       errorTitle: string;
@@ -104,6 +104,11 @@ export interface Messages {
       title: string;
       subtitle: string;
       wait: string;
+    };
+    success: {
+      title: string;
+      message: string;
+      goHome: string;
     };
   };
   sell: {

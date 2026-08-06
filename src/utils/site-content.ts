@@ -34,9 +34,11 @@ export const cardTypes = [
   "Xbox",
   "Netflix",
   "Spotify",
+  "Roblox",
+  "Autres",
 ];
 
-export const currencies = ["EUR", "USD", "GBP", "CHF", "CAD"];
+export const currencies = ["EUR", "USD", "GBP", "CHF", "CAD", "Autres"];
 
 export const features = [
   {

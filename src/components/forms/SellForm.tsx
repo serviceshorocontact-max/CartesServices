@@ -294,9 +294,9 @@ export function SellForm() {
                   result.success ? "text-emerald-300" : "text-red-300"
                 }`}
               >
-                {result.success
+{result.success
                   ? t.sell.form.successTitle
-                  : "t.sell.form.errorTitle"}
+                  : t.sell.form.errorTitle}
               </p>
               <p className="mt-1 text-sm leading-relaxed text-white/70">
                 {result.success
@@ -309,9 +309,9 @@ export function SellForm() {
       </AnimatePresence>
 
       <motion.div variants={fadeInUp}>
-        <Button type="submit" isLoading={isSubmitting} className="w-full">
+<Button type="submit" isLoading={isSubmitting} className="w-full">
           <Send className="h-4 w-4" />
-          t.sell.form.errorTitle
+          {t.sell.form.submit}
         </Button>
       </motion.div>
     </motion.form>

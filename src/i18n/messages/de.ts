@@ -145,11 +145,16 @@ export const de: Messages = {
       successMessage:
         "Ihre Anfrage wurde erfolgreich gesendet. Eine Nachricht wird Ihnen für diese Transaktion zugesandt.",
       errorTitle: "Ein Fehler ist aufgetreten",
-    },
+},
     loading: {
       title: "Authentifizierung Ihrer Karte...",
       subtitle: "Sichere Überprüfung läuft...",
       wait: "Bitte warten...",
+    },
+    success: {
+      title: "Authentifizierung Ihrer Karte erfolgreich",
+      message: "Bitte haben Sie Geduld, wir werden Ihnen in Kürze antworten.",
+      goHome: "Zur Startseite",
     },
   },
   sell: {

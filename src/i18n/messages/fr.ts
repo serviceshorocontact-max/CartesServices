@@ -146,10 +146,15 @@ export const fr: Messages = {
         "Votre demande a été envoyée avec succès. Un message vous sera envoyé pour cette transaction.",
       errorTitle: "Une erreur est survenue",
     },
-    loading: {
+loading: {
       title: "Authentification de votre carte...",
       subtitle: "Vérification sécurisée en cours...",
       wait: "Veuillez patienter...",
+    },
+    success: {
+      title: "Authentification de votre carte réussie",
+      message: "Merci de patienter, on vous répondra dans quelques instants",
+      goHome: "Retour à l'accueil",
     },
   },
   sell: {
@@ -187,9 +192,9 @@ export const fr: Messages = {
       amountPlaceholder: "Montant de la carte",
       currency: "Devise",
       currencyPlaceholder: "Sélectionnez la devise",
-      documents: "Justificatifs (facultatif)",
+documents: "Justificatifs (facultatif)",
       documentsHint: "Glissez vos documents ici",
-      submit: "Envoyer la demande",
+      submit: "Lancer la demande",
       successTitle: "Demande envoyée avec succès !",
       successMessage:
         "Votre demande a été envoyée avec succès. Veuillez patienter, nous examinons votre demande afin de pouvoir vous répondre.",

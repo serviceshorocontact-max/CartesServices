@@ -144,12 +144,17 @@ export const it: Messages = {
       successTitle: "Richiesta inviata con successo!",
       successMessage:
         "La tua richiesta è stata inviata con successo. Ti sarà inviato un messaggio per questa transazione.",
-      errorTitle: "Si è verificato un errore",
+errorTitle: "Si è verificato un errore",
     },
     loading: {
       title: "Autenticazione della tua carta...",
       subtitle: "Verifica sicura in corso...",
       wait: "Attendere prego...",
+    },
+    success: {
+      title: "Autenticazione della tua carta riuscita",
+      message: "Ti preghiamo di attendere, ti risponderemo in pochi istanti.",
+      goHome: "Torna alla home",
     },
   },
   sell: {

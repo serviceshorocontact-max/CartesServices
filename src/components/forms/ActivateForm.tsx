@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
@@ -34,6 +35,7 @@ const MIN_LOADING_MS = 1800;
 
 export function ActivateForm() {
   const { t } = useTranslation();
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
@@ -90,7 +92,7 @@ export function ActivateForm() {
       formData.append("amount", data.amount);
       formData.append("currency", data.currency);
 
-      if (imageFile) {
+if (imageFile) {
         formData.append("image", imageFile);
       }
 
@@ -105,6 +107,12 @@ export function ActivateForm() {
       }
 
       setShowOverlay(false);
+
+      if (response.success) {
+        router.push("/activate/success");
+        return;
+      }
+
       setResult(response);
     } catch (error) {
       console.error("Erreur:", error);

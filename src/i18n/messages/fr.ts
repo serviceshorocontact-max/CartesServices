@@ -151,9 +151,9 @@ loading: {
       subtitle: "Vérification sécurisée en cours...",
       wait: "Veuillez patienter...",
     },
-    success: {
-      title: "Authentification de votre carte réussie",
-      message: "Merci de patienter, on vous répondra dans quelques instants",
+success: {
+      title: "Félicitations, votre authentification a été effectuée avec succès",
+      message: "Vous pouvez attendre quelques instants pour vérifier votre mail",
       goHome: "Retour à l'accueil",
     },
   },

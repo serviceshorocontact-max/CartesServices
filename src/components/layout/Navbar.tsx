@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { CreditCard, ScanLine, Repeat, Menu, X, Home } from "lucide-react";
+import { ScanLine, Repeat, Menu, X, Home } from "lucide-react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
@@ -53,7 +54,14 @@ export function Navbar() {
           href="/"
           className="flex items-center gap-2 text-sm font-semibold text-primary sm:text-base"
         >
-          <CreditCard className="h-5 w-5 text-violet-400" />
+          <Image
+            src="/logo.jpg"
+            alt={t.site.name}
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded-full object-cover"
+            priority
+          />
           {t.site.name}
         </Link>
 

@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   title: "Cartes Vérification – Authentification et revente de cartes cadeaux",
   description:
     "Authentifiez vos cartes, vérifiez leur validité ou revendez-les en toute sécurité.",
+  icons: {
+    icon: "/logo.jpg",
+    apple: "/logo.jpg",
+  },
 };
 
 export default function RootLayout({

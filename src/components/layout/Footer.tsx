@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { CreditCard, ScanLine, Repeat, Shield, FileText, Scale } from "lucide-react";
+import { ScanLine, Repeat, Shield, FileText, Scale } from "lucide-react";
+import Image from "next/image";
 import { useTranslation } from "@/i18n/I18nProvider";
 
 export function Footer() {
@@ -14,7 +15,13 @@ export function Footer() {
         <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2 text-primary">
-              <CreditCard className="h-5 w-5 text-violet-400" />
+              <Image
+                src="/logo.jpg"
+                alt={t.site.name}
+                width={32}
+                height={32}
+                className="h-8 w-8 rounded-full object-cover"
+              />
               <span className="font-semibold">{t.site.name}</span>
             </div>
             <p className="text-sm leading-relaxed text-tertiary">

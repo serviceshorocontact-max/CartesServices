@@ -106,13 +106,13 @@ export function SellForm() {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <motion.div variants={fadeInUp}>
-          <FormField label={t.sell.form.firstName} htmlFor="firstName"error={errors.firstName?.message}>
+          <FormField label={t.sell.form.firstName} htmlFor="firstName" error={errors.firstName?.message}>
             <div className="relative">
               <User className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
               <Input
                 id="firstName"
                 className="pl-9"
-                placeholder={t.sell.form.amountPlaceholder}
+                placeholder={t.sell.form.firstNamePlaceholder}
                 hasError={!!errors.firstName}
                 {...register("firstName")}
               />
@@ -207,7 +207,7 @@ export function SellForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <motion.div variants={fadeInUp}>
-          <FormField label="{t.sell.form.amount}" htmlFor="amount" error={errors.amount?.message}>
+          <FormField label={t.sell.form.amount} htmlFor="amount" error={errors.amount?.message}>
             <div className="relative">
               <Wallet className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tertiary" />
               <Input
@@ -217,7 +217,7 @@ export function SellForm() {
                 step="any"
                 inputMode="decimal"
                 className="pl-9"
-                placeholder="Montant de la carte"
+                placeholder={t.sell.form.amountPlaceholder}
                 hasError={!!errors.amount}
                 {...register("amount")}
               />
